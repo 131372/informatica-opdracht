@@ -1,1 +1,2 @@
 # informatica-opdracht
+camping plattegrond
