@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("div").mouseover(function(){
+    $("div").css("background-color","yellow");
+  });
+  $("div").mouseout(function(){
+    $("div").css("background-color","lightgray");
+  });
+});
+</script>
+</head>
+<body>
+<style>
+div.pos_fixed {
+    position: fixed;
+    top: 30px;
+    right: 5px;
+}
+</style>
+<div style="background-color:black; color:white; height:100px; length:100px">
+</div>
+<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="camping" style="width:304px;height:228px">
+</body>
+</html>
