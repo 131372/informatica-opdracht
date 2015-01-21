@@ -24,8 +24,8 @@ for($i=204;$i<=218;$i++){
 }
 */
 
-for($i=204;$i<=218;$i++){
-	$sql = "UPDATE Kavels SET type='zonder elektra' WHERE nummer='$i'";
+for($i=219;$i<=224;$i++){
+	$sql = "UPDATE Kavels SET type='budget' WHERE nummer='$i'";
 
 	if (mysqli_query($conn, $sql)) {
 		echo "Record updated successfully";
