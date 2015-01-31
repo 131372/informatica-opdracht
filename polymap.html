@@ -2,23 +2,70 @@
 <html>
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script>
-			$('.mapping').mouseover(function() {
+		<script> 
+		window.onload = function(){ 
+
+			var e = document.getElementById('B');
+			e.onmouseover = function() {
+ 		 		document.getElementById('Bdiv').style.display = 'block';
+			}
+			e.onmouseout = function() {
+ 			 	document.getElementById('Bdiv').style.display = 'none';
+			}
+			};
+			/*document.getElementById("B").onmousehover = function() {mouseOver()};
+			document.getElementById("B").onmouseout = function() {mouseOut()};
+			
+			function mouseOver() {
+    			document.getElementById("DD").style.display = "block";
+			}
+
+			function mouseOut() {
+    			document.getElementById("DD").style.display = "none";
+			}
+			*/
+			/*$('.mapping').mouseover(function() {
    				alert($(this).attr('id'));
 			}).mouseout(function(){
    				alert('Mouseout....');      
-			});
+			}); 
+			*/
+			 		//<area shape="rect" coords="0,0,82,126" alt="Sun" href="http://www.nu.nl">
+			 		//           		<area shape="rect" class="mapping" coords="0,0,82,126" href="javascript:alert('D');">
+			/*	#DD {
+    	background-color: black;
+    	position: fixed;
+    	top: 50px;
+    	left: 1100px;
+    	height: 100px;
+    	width: 100px;
+    }
+    */
 		</script>
 	</head>
+	<style>
+	#DD {
+    	position: fixed;
+    	top: 50px;
+    	left: 1100px;
+    	height: 100px;
+    	width: 100px;
+    }
+    .image {
+    	width: 1000px;
+    	height: 700px;
+    }
+	</style>
 	<body>
 		<div>
-		<img src="camping plattegrond.jpg">
+		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
        		<map name="me">
-           		<area shape="poly" class="mapping" coords="125,65,124,61,123,63,122,62,119,63,123,69,122,68,120,62,123,61,125,60,131,64,131,69," href="javascript:alert('A');" />
-           		<area shape="poly" class="mapping" coords="149,62,152,60,150,60,148,58,148,63,146,65,146,62,146,61,146,58,159,61,158,62,158,60,156,67" href="javascript:alert('B');" />
-           		<area shape="rect" class="mapping" coords="201,225,220,241" href="javascript:alert('C');">
-           		<area shape="rect" class="mapping" coords="177,143,210,172" href="javascript:alert('D');">
+           		<area shape="poly" id="A" class="mapping" coords="200,0,200,100,300,200,200,300" href="javascript:alert('A');" />
+           		<area shape="poly" id="B" class="mapping" coords="0,0,0,500,500,0,500,500" href="javascript:alert('B');"/>
+           		<area shape="poly" id="C" class="mapping" coords="100,100,100,200,300,400,500,600" href="javascript:map();">
        		</map>
+   		</div>
+   		<div id="Bdiv" style="display: none"> are you recieving me over?
    		</div>
 	</body>
 </html>
