@@ -3,54 +3,85 @@
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script> 
-		window.onload = function(){ 
+			window.onload = function(){ 
+				var a = document.getElementById('A');
+				a.onmouseover = function() {
+ 		 			document.getElementById('Adiv').style.display = 'block';
+				}
+				a.onmouseout = function() {
+ 			 		document.getElementById('Adiv').style.display = 'none';
+				}
+				var b = document.getElementById('B');
+				b.onmouseover = function() {
+ 		 			document.getElementById('Bdiv').style.display = 'block';
+				}
+				b.onmouseout = function() {
+ 			 		document.getElementById('Bdiv').style.display = 'none';
+				}
+				b.onclick = function() {
+					document.getElementById('Bboekdiv').style.display = 'block';
+				}
+				var c = document.getElementById('C');
+				c.onmouseover = function() {
+ 		 			document.getElementById('Cdiv').style.display = 'block';
+				}
+				c.onmouseout = function() {
+ 			 		document.getElementById('Cdiv').style.display = 'none';
+				}
 
-			var e = document.getElementById('B');
-			e.onmouseover = function() {
- 		 		document.getElementById('Bdiv').style.display = 'block';
-			}
-			e.onmouseout = function() {
- 			 	document.getElementById('Bdiv').style.display = 'none';
-			}
 			};
-			/*document.getElementById("B").onmousehover = function() {mouseOver()};
-			document.getElementById("B").onmouseout = function() {mouseOut()};
-			
-			function mouseOver() {
-    			document.getElementById("DD").style.display = "block";
-			}
-
-			function mouseOut() {
-    			document.getElementById("DD").style.display = "none";
-			}
-			*/
-			/*$('.mapping').mouseover(function() {
-   				alert($(this).attr('id'));
-			}).mouseout(function(){
-   				alert('Mouseout....');      
-			}); 
-			*/
-			 		//<area shape="rect" coords="0,0,82,126" alt="Sun" href="http://www.nu.nl">
-			 		//           		<area shape="rect" class="mapping" coords="0,0,82,126" href="javascript:alert('D');">
-			/*	#DD {
-    	background-color: black;
-    	position: fixed;
-    	top: 50px;
-    	left: 1100px;
-    	height: 100px;
-    	width: 100px;
-    }
-    */
+			function validateForm()
+				{
+					var x=document.forms["contactform"]["voornaam"].value;
+					if (x==null || x=="")
+  				{
+  			alert("Geef alstublieft uw voornaam op");
+  			return false;
+  				}
+  
+  var x=document.forms["contactform"]["achternaam"].value;
+if (x==null || x=="")
+  {
+  alert("Geef alstublieft uw achternaam op");
+  return false;
+  }
+  var x=document.forms["contactform"]["e-mail adres"].value;
+if (x==null || x=="")
+  {
+  alert("Geef alstublieft uw e-mail adres op");
+  return false;
+  }
+  var x=document.forms["contactform"]["vraag"].value;
+if (x==null || x=="")
+  {
+  alert("Why you send a mail, when you don't send any message to me?");
+  return false;
+  }
+}
 		</script>
 	</head>
 	<style>
-	#DD {
+	#Adiv {
+		position: fixed;
+    	top: 50px;
+    	left: 1100px;
+    }
+	#Bdiv {
+    	position: fixed;
+    	top: 50px;
+    	left: 1000px;
+    }
+    #Bboekdiv {
+    	position: fixed;
+    	top: 50px;
+    	left: 1200px;
+    }
+    #Cdiv {
     	position: fixed;
     	top: 50px;
     	left: 1100px;
-    	height: 100px;
-    	width: 100px;
     }
+
     .image {
     	width: 1000px;
     	height: 700px;
@@ -60,12 +91,71 @@
 		<div>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
        		<map name="me">
-           		<area shape="poly" id="A" class="mapping" coords="200,0,200,100,300,200,200,300" href="javascript:alert('A');" />
-           		<area shape="poly" id="B" class="mapping" coords="0,0,0,500,500,0,500,500" href="javascript:alert('B');"/>
-           		<area shape="poly" id="C" class="mapping" coords="100,100,100,200,300,400,500,600" href="javascript:map();">
+           		<area shape="poly" id="A" class="mapping" coords="200,0,200,100,300,200,200,300"/>
+           		<area shape="poly" id="B" class="mapping" coords="0,0,0,500,500,0,500,500" />
+           		<area shape="poly" id="C" class="mapping" coords="100,100,100,200,300,400,500,600"/>
        		</map>
    		</div>
-   		<div id="Bdiv" style="display: none"> are you recieving me over?
+   		
+   		<div id="Adiv" style="display: none">
+   		Plaats nr.: A <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: M <br>
+   		Bijzonderheden: ligt door plaats B <br>
+   		</div>
+   		
+   		<div id="Bdiv" style="display: none">
+   		Plaats nr.: B <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: XL <br>
+   		Bijzonderheden: Zandloper figuur <br>
+   		</div>
+   		
+   		<div id="Bboekdiv" style="display: none">
+   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+
+			Persoonlijke informatie:
+			<br>
+				Voornaam: <input type="text" name="voornaam" placeholder="voornaam">
+			<br>
+				Achternaam: <input type="text" name="achternaam" placeholder="achternaam">
+			<br>
+				Adres: <input type="text" name="postcode" placeholder="postcode"> 
+				<input type="text" name="huisnummer" placeholder="huisnummer">
+				<input type="text" name="land" placeholder="land">
+			<br>
+				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
+			<br>
+				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
+			<br>
+				Boekingsperiode:
+			<br>
+				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+			<br>
+				<input type="checkbox" name="Caravan" value="Caravan">Caravan
+				<br>
+				<input type="checkbox" name="Tent" value="Tent">Tent
+				<br>
+				<input type="checkbox" name="Camper" value="Camper">Camper
+			<br>
+
+		</form>
+   		</div>
+   		
+   		<div id="Cdiv" style="display: none">
+   		Plaats nr.: C <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: M <br>
+   		Bijzonderheden: geen <br>
    		</div>
 	</body>
 </html>
