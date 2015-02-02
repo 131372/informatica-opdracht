@@ -70,6 +70,8 @@ function stop2(){
 }
 
 document.addEventListener("click", printMousePos);
+
+//boekingsinformatie naar database + omschrijven naar PDO
 </script>
 
 </button>
@@ -86,23 +88,27 @@ document.addEventListener("click", printMousePos);
 
 <?php
 
-	$servername = "localhost";
-	$username = "v13mgielen";
-	$password = "3Hs8WpT2";
-	$dbName= "v13mgielen_opdr";
-	
-	$conn = new mysqli($servername, $username, $password, $dbName); 
-	if ($conn -> connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+require_once 'db_config.php';
 
-	$sql = "SELECT nummer,coordinaten2 FROM Kavels";
-	$result = $conn->query($sql);
+	try{
+	$sql = "SELECT nummer,coordinaten2 from Kavels";
+	$result = $db->prepare($sql);
+	$result->execute();
+}	
+	catch(PDOException $e) 
+{ 
+    echo '<pre>'; 
+    echo 'Regel: '.$e->getLine().'<br>'; 
+    echo 'Bestand: '.$e->getFile().'<br>'; 
+    echo 'Foutmelding: '.$e->getMessage(); 
+    echo '</pre>'; 
+}
 	
-    while($row = $result->fetch_assoc()) {
+	while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
 		$div = explode(",",$row['coordinaten2']);
-        echo "<div class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
-    }
+		echo "<div class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
+	}
 	
 ?>
 
