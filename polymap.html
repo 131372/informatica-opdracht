@@ -2,23 +2,160 @@
 <html>
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script>
-			$('.mapping').mouseover(function() {
-   				alert($(this).attr('id'));
-			}).mouseout(function(){
-   				alert('Mouseout....');      
-			});
+		<script> 
+			window.onload = function(){ 
+				var a = document.getElementById('A');
+				a.onmouseover = function() {
+ 		 			document.getElementById('Adiv').style.display = 'block';
+				}
+				a.onmouseout = function() {
+ 			 		document.getElementById('Adiv').style.display = 'none';
+				}
+				var b = document.getElementById('B');
+				b.onmouseover = function() {
+ 		 			document.getElementById('Bdiv').style.display = 'block';
+				}
+				b.onmouseout = function() {
+ 			 		document.getElementById('Bdiv').style.display = 'none';
+				}
+				b.onclick = function() {
+					document.getElementById('Bboekdiv').style.display = 'block';
+				}
+				var c = document.getElementById('C');
+				c.onmouseover = function() {
+ 		 			document.getElementById('Cdiv').style.display = 'block';
+				}
+				c.onmouseout = function() {
+ 			 		document.getElementById('Cdiv').style.display = 'none';
+				}
+
+			};
+			function validateForm()
+				{
+					var x=document.forms["contactform"]["voornaam"].value;
+					if (x==null || x=="")
+  				{
+  			alert("Geef alstublieft uw voornaam op");
+  			return false;
+  				}
+  
+  var x=document.forms["contactform"]["achternaam"].value;
+if (x==null || x=="")
+  {
+  alert("Geef alstublieft uw achternaam op");
+  return false;
+  }
+  var x=document.forms["contactform"]["e-mail adres"].value;
+if (x==null || x=="")
+  {
+  alert("Geef alstublieft uw e-mail adres op");
+  return false;
+  }
+  var x=document.forms["contactform"]["vraag"].value;
+if (x==null || x=="")
+  {
+  alert("Why you send a mail, when you don't send any message to me?");
+  return false;
+  }
+}
 		</script>
 	</head>
+	<style>
+	#Adiv {
+		position: fixed;
+    	top: 50px;
+    	left: 1100px;
+    }
+	#Bdiv {
+    	position: fixed;
+    	top: 50px;
+    	left: 1000px;
+    }
+    #Bboekdiv {
+    	position: fixed;
+    	top: 50px;
+    	left: 1200px;
+    }
+    #Cdiv {
+    	position: fixed;
+    	top: 50px;
+    	left: 1100px;
+    }
+
+    .image {
+    	width: 1000px;
+    	height: 700px;
+    }
+	</style>
 	<body>
 		<div>
-		<img src="camping plattegrond.jpg">
+		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
        		<map name="me">
-           		<area shape="poly" class="mapping" coords="125,65,124,61,123,63,122,62,119,63,123,69,122,68,120,62,123,61,125,60,131,64,131,69," href="javascript:alert('A');" />
-           		<area shape="poly" class="mapping" coords="149,62,152,60,150,60,148,58,148,63,146,65,146,62,146,61,146,58,159,61,158,62,158,60,156,67" href="javascript:alert('B');" />
-           		<area shape="rect" class="mapping" coords="201,225,220,241" href="javascript:alert('C');">
-           		<area shape="rect" class="mapping" coords="177,143,210,172" href="javascript:alert('D');">
+           		<area shape="poly" id="A" class="mapping" coords="200,0,200,100,300,200,200,300"/>
+           		<area shape="poly" id="B" class="mapping" coords="0,0,0,500,500,0,500,500" />
+           		<area shape="poly" id="C" class="mapping" coords="100,100,100,200,300,400,500,600"/>
        		</map>
+   		</div>
+   		
+   		<div id="Adiv" style="display: none">
+   		Plaats nr.: A <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: M <br>
+   		Bijzonderheden: ligt door plaats B <br>
+   		</div>
+   		
+   		<div id="Bdiv" style="display: none">
+   		Plaats nr.: B <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: XL <br>
+   		Bijzonderheden: Zandloper figuur <br>
+   		</div>
+   		
+   		<div id="Bboekdiv" style="display: none">
+   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+
+			Persoonlijke informatie:
+			<br>
+				Voornaam: <input type="text" name="voornaam" placeholder="voornaam">
+			<br>
+				Achternaam: <input type="text" name="achternaam" placeholder="achternaam">
+			<br>
+				Adres: <input type="text" name="postcode" placeholder="postcode"> 
+				<input type="text" name="huisnummer" placeholder="huisnummer">
+				<input type="text" name="land" placeholder="land">
+			<br>
+				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
+			<br>
+				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
+			<br>
+				Boekingsperiode:
+			<br>
+				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+			<br>
+				<input type="checkbox" name="Caravan" value="Caravan">Caravan
+				<br>
+				<input type="checkbox" name="Tent" value="Tent">Tent
+				<br>
+				<input type="checkbox" name="Camper" value="Camper">Camper
+			<br>
+
+		</form>
+   		</div>
+   		
+   		<div id="Cdiv" style="display: none">
+   		Plaats nr.: C <br>
+   		Prijs (p.p per nacht): €genoeg <br>
+   		Bezet op: (31-1 tot 10-2) <br>
+   		          (24-2 tot 4-3) <br>
+   		Type: Comfort <br>
+   		Grootte: M <br>
+   		Bijzonderheden: geen <br>
    		</div>
 	</body>
 </html>

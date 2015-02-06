@@ -89,16 +89,25 @@ document.addEventListener("click", printMousePos);
 
 <?php
 
-	$servername = "localhost";
-	$username = "v13mgielen";
-	$password = "3Hs8WpT2";
-	$dbName= "v13mgielen_opdr";
-	
-	$conn = new mysqli($servername, $username, $password, $dbName); 
-	if ($conn -> connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+require_once 'db_config.php';
 
+	try{
+	$sql = "SELECT nummer,coordinaten2 from Kavels";
+	$result = $db->prepare($sql);
+	$result->execute();
+}	
+	catch(PDOException $e) 
+{ 
+    echo '<pre>'; 
+    echo 'Regel: '.$e->getLine().'<br>'; 
+    echo 'Bestand: '.$e->getFile().'<br>'; 
+    echo 'Foutmelding: '.$e->getMessage(); 
+    echo '</pre>'; 
+}
+	
+	while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+<<<<<<< HEAD
 	$sql = "SELECT nummer,coordinaten2 from Kavels";
 	$result = $conn->$sql;
 	$i = 0;
@@ -107,6 +116,10 @@ document.addEventListener("click", printMousePos);
 		print_r($div);
 		$div = explode(",",$div);
 		echo "<div id='",$i,"' class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
+=======
+		$div = explode(",",$row['coordinaten2']);
+		echo "<div class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
+>>>>>>> bbd69ce063a9d3b298c61e70c00bffcf34b9568e
 	}
 	
 ?>
