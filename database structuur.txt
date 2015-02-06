@@ -5,4 +5,4 @@ tabel boekingen
 nummer, naam, lengte verblijf, begin datum, eind datum
 
 tabel klanten (optioneel)
-naam, (extra informatie, zoals adres)
+naam, postcode, huisnr, land

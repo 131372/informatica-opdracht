@@ -6,7 +6,6 @@
 		width:20px;
 		height: 2px;
 		background-color:black;
-		position: absolute;
 	}
 	
 
@@ -21,6 +20,8 @@
 <img width="500" height="500" src="camping plattegrond.jpg" alt="niets">
 
 <script>
+require_once 'db_config.php'; 
+
 var y=0;
 var z=0;
 var coordinates = "";
@@ -70,6 +71,8 @@ function stop2(){
 }
 
 document.addEventListener("click", printMousePos);
+
+//boekingsinformatie naar database + omschrijven naar PDO
 </script>
 
 </button>
@@ -96,13 +99,15 @@ document.addEventListener("click", printMousePos);
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT nummer,coordinaten2 FROM Kavels";
-	$result = $conn->query($sql);
-	
-    while($row = $result->fetch_assoc()) {
-		$div = explode(",",$row['coordinaten2']);
-        echo "<div class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
-    }
+	$sql = "SELECT nummer,coordinaten2 from Kavels";
+	$result = $conn->$sql;
+	$i = 0;
+	foreach($cords as $div){
+		$i++;
+		print_r($div);
+		$div = explode(",",$div);
+		echo "<div id='",$i,"' class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
+	}
 	
 ?>
 

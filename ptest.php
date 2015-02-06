@@ -1,5 +1,6 @@
 
 <?php
+require_once 'db_config.php'; 
 
 $servername = "localhost";
 $username = "v13mgielen";
@@ -11,15 +12,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$c = $_GET['test'];
+
+
 $a = $_GET['name'];
 $b = $_GET['eman'];
 
-	$sql = "UPDATE Kavels SET coordinaten='$b' WHERE nummer='$a'";
+if($c==1){
+	$sql = "UPDATE Kavels SET coordinaten1='$b' WHERE nummer='$a'";
 
 	if (mysqli_query($conn, $sql)) {
 		echo "Record updated successfully";
 	} else {
 		echo "Error updating record: " . mysqli_error($conn);
 	}
+}
+else{
+	$sql = "UPDATE Kavels SET coordinaten2='$b' WHERE nummer='$a'";
 
+	if (mysqli_query($conn, $sql)) {
+		echo "Record updated successfully";
+	} else {
+		echo "Error updating record: " . mysqli_error($conn);
+	}
+}
 ?>
