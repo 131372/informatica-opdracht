@@ -35,6 +35,7 @@
 					document.getElementById('203boekdiv').style.display = 'block';
 				}
 			};
+
 			function validateForm() {
 					var x=document.forms["contactform"]["voornaam"].value;
 					if (x==null || x=="")
@@ -105,6 +106,7 @@
 	<body>
 		<div>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
+		<map name='me'>
        		<?php
 			require_once 'db_config.php';
 			try{
@@ -120,9 +122,10 @@
     			echo '</pre>'; 
 			}
 			while($row = $result->fetch(PDO::FETCH_ASSOC)){
-				echo "<map name='me'><area shape='poly' id='$row[nummer]' class='mapping' coords='$row[coordinaten1];'/></map>";	
+				echo "<area shape='poly' id='$row[nummer]' class='mapping' coords='$row[coordinaten1];'/>";	
 			}
 			?>
+		</map>
 
    		<div id="201div" style="display: none">
    		Plaats nr.: A <br>
@@ -131,7 +134,7 @@
    		          (24-2 tot 4-3) <br>
    		Type: Comfort <br>
    		Grootte: M <br>
-   		Bijzonderheden: ligt door plaats B <br>
+   		Bijzonderheden: 201 <br>
    		</div>
    		
    		<div id="202div" style="display: none">
@@ -141,7 +144,7 @@
    		          (24-2 tot 4-3) <br>
    		Type: Comfort <br>
    		Grootte: XL <br>
-   		Bijzonderheden: Zandloper figuur <br>
+   		Bijzonderheden: 202 <br>
    		</div>
    		
    		<div id="203div" style="display: none">
@@ -151,7 +154,7 @@
    		          (24-2 tot 4-3) <br>
    		Type: Comfort <br>
    		Grootte: M <br>
-   		Bijzonderheden: geen <br>
+   		Bijzonderheden: 203 <br>
    		</div>
    		
    		<div id="201boekdiv" style="display: none">
@@ -211,7 +214,7 @@
 		</form>
    		</div>
    		 			<div id="203boekdiv" style="display: none">
-   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form <form action=”info.php” method=”post”> name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
 
 			Persoonlijke informatie:
 			<br>
