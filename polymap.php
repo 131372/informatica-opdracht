@@ -35,6 +35,7 @@
 					document.getElementById('203boekdiv').style.display = 'block';
 				}
 			};
+		/*$('#f1').on('submit',functions () {
 
 			function validateForm() {
 					var x=document.forms["contactform"]["voornaam"].value;
@@ -43,26 +44,40 @@
   			alert("Geef alstublieft uw volledige naam op");
   			return false;
   				}
-  					var x=document.forms["contactform"]["achternaam"].value;
+  					var x=document.forms["contactform"]["Postcode"].value;
 					if (x==null || x=="")
   				{
-  			alert("Geef alstublieft uw achternaam op");
+  			alert("Geef alstublieft uw postcode op");
+  			return false;
+  				}
+  					var x=document.forms["contactform"]["huisnummer"].value;
+					if (x==null || x=="")
+  				{
+  			alert("Geef alstublieft uw huisnummer op");
+  			return false;
+  				}
+  					var x=document.forms["contactform"]["land"].value;
+					if (x==null || x=="")
+  				{
+  			alert("Geef alstublieft uw land op");
+  			return false;
+  				}
+  					var x=document.forms["contactform"]["tel. nummer"].value;
+					if (x==null || x=="")
+  				{
+  			alert("Geef alstublieft uw telefoonnummer op");
   			return false;
   				}
   					var x=document.forms["contactform"]["e-mail adres"].value;
-					if (x==null || x=="")
+					if (x==null || x!="%@%.%")
   				{
-  			alert("Geef alstublieft uw e-mail adres op");
+  			alert("Geef alstublieft uw telefoonnummer op");
   			return false;
   				}
-  					var x=document.forms["contactform"]["vraag"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Why you send a mail, when you don't send any message to me?");
-  			return false;
-  				}
+  				
 			}
-
+			});
+*/
 	</script>
 
 	
@@ -104,7 +119,6 @@
     }
 	</style>
 	<body>
-		<div>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
 		<map name='me'>
        		<?php
@@ -158,7 +172,7 @@
    		</div>
    		
    		<div id="201boekdiv" style="display: none">
-   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form action= "info.php" method= "post" id="f1" name="form201" enctype="text/plain" onsubmit="return validateForm()" method="get">
 
 			Persoonlijke informatie:
 			<br>
@@ -182,11 +196,11 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
-
+			<input type="submit" />
 		</form>
    		</div>
    		<div id="202boekdiv" style="display: none">
-   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form action= "info.php" method= "post" name="form202" enctype="text/plain" onsubmit="return validateForm(202)" method="get">
 
 			Persoonlijke informatie:
 			<br>
@@ -200,7 +214,7 @@
 			<br>
 				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
 			<br>
-				Boekingsperiode:
+				Boekingsperiode: 
 			<br>
 				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
 			<br>
@@ -210,11 +224,11 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
-
+			<input type="submit" />
 		</form>
    		</div>
    		 			<div id="203boekdiv" style="display: none">
-   		<form <form action=”info.php” method=”post”> name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form action= "info.php" method= "post" name="form203" enctype="text/plain" onsubmit="return validateForm(203)" method="get">
 
 			Persoonlijke informatie:
 			<br>
@@ -238,7 +252,7 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
-
+			<input type="submit"/>
 		</form>
    		</div>
    		
