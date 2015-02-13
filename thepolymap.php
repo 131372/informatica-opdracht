@@ -38,10 +38,8 @@
 				c.onclick = function() {
 					document.getElementById('203boekdiv').style.display = 'block';
 				}
-
 			
 				};
-			};
 
 			function validateForm()
 			{
@@ -49,7 +47,7 @@
 				if(document.getElementById('Caravan').checked){allchecked=1;}
 				if(document.getElementById('Tent').checked){allchecked=1;}
 				if(document.getElementById('Camper').checked){allchecked=1;}
-				if(allchecked==0){alert('Selecteer camper, caravan en/of tent'); return false;}
+				if(allchecked==0){alert('Selecteer'); return false;}
 				
   				var x=document.forms["boekform"]["aantal personen"].value;
 				if (x==null || x=="")
@@ -57,38 +55,16 @@
   					alert("Geef alstublieft het aantal personen op");
   					return false;
   				}
-
-  				/*var x=document.forms["boekform"]["boekingsperiode"].value;
+  				var x=document.forms["boekform"]["boekingsperiode"].value;
 				if (x==null || x=="")
   				{
   					alert("Geef alstublieft uw boekingsperiode op");
   					return false;
   				}
-  				*/
+  			
 
   			}
 			
-  					var x=document.forms["contactform"]["achternaam"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Geef alstublieft uw achternaam op");
-  			return false;
-  				}
-  					var x=document.forms["contactform"]["e-mail adres"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Geef alstublieft uw e-mail adres op");
-  			return false;
-  				}
-  					var x=document.forms["contactform"]["vraag"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Why you send a mail, when you don't send any message to me?");
-  			return false;
-  				}
-			}
-
->>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 	</script>
 
 	
@@ -131,7 +107,6 @@
     }
 	</style>
 	<body>
-		<div>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
 		<map name='me'>
        		<?php
@@ -186,24 +161,8 @@
    		</div>
    		
    		<div id="201boekdiv" style="display: none">
-<<<<<<< HEAD
    		<form action= "info.php" method= "post" id="f1" name="boekform" enctype="text/plain" onsubmit="return validateForm()" method="get">
 			Boekingsinformatie:
-=======
-   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
-
-			Persoonlijke informatie:
-			<br>
-				Volledige naam: <input type="text" name="voornaam" placeholder="Achternaam - Voornaam">
-			<br>
-				Adres: <input type="text" name="postcode" placeholder="postcode"> 
-				<input type="text" name="huisnummer" placeholder="huisnummer">
-				<input type="text" name="land" placeholder="land">
-			<br>
-				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
-			<br>
-				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
->>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
 				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
 			<br>
@@ -215,32 +174,14 @@
 				<br>
 				<input type="checkbox" id="Camper" value="Camper">Camper
 			<br>
-
+			<input type="submit" />
 		</form>
    		</div>
    		<div id="202boekdiv" style="display: none">
-<<<<<<< HEAD
    		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(202)" method="get">
 			Boekingsinformatie:
 			<br>
 				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
-=======
-   		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
-
-			Persoonlijke informatie:
-			<br>
-				Volledige naam: <input type="text" name="voornaam" placeholder="Achternaam - Voornaam">
-			<br>
-				Adres: <input type="text" name="postcode" placeholder="postcode"> 
-				<input type="text" name="huisnummer" placeholder="huisnummer">
-				<input type="text" name="land" placeholder="land">
-			<br>
-				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
-			<br>
-				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
-			<br>
-				Boekingsperiode:
->>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
 				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
 			<br>
@@ -250,26 +191,12 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
-
+			<input type="submit" />
 		</form>
-<<<<<<< HEAD
    		</div>   		 			
    		<div id="203boekdiv" style="display: none">
    		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(203)" method="get">
 			Boekingsinformatie:
-=======
-   		</div>
-   		 			<div id="203boekdiv" style="display: none">
-   		<form <form action=”info.php” method=”post”> name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
-
-			Persoonlijke informatie:
-			<br>
-				Volledige naam: <input type="text" name="voornaam" placeholder="Achternaam - Voornaam">
-			<br>
-				Adres: <input type="text" name="postcode" placeholder="postcode"> 
-				<input type="text" name="huisnummer" placeholder="huisnummer">
-				<input type="text" name="land" placeholder="land">
->>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
 				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
 			<br>
@@ -281,11 +208,7 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
-<<<<<<< HEAD
 			<input type="submit" />
-=======
-
->>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 		</form>
    		</div>
    		
