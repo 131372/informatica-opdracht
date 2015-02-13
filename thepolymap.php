@@ -6,7 +6,8 @@
 		<?php
 			 //echo "<script> document.getElementById('plaats').innerHTML=!!!; </script>"
 		?>
-		<script> 
+		<script>
+		console.log(11); 
 			window.onload = function(){ 
 				var a = document.getElementById('201');
 				a.onmouseover = function() {
@@ -26,7 +27,7 @@
  			 		document.getElementById('202div').style.display = 'none';
 				}
 				b.onclick = function() {
-					document.getElementById('202boekdiv').style.display = 'block';
+					document.getElementById('201boekdiv').style.display = 'block';
 				}
 				var c = document.getElementById('203');
 				c.onmouseover = function() {
@@ -36,7 +37,7 @@
  			 		document.getElementById('203div').style.display = 'none';
 				} 
 				c.onclick = function() {
-					document.getElementById('203boekdiv').style.display = 'block';
+					document.getElementById('201boekdiv').style.display = 'block';
 				}
 			
 				};
@@ -58,12 +59,14 @@
   				var x=document.forms["boekform"]["boekingsperiode"].value;
 				if (x==null || x=="")
   				{
+  					console.log(12);
+  					console.log(document.forms["boekform"]);
   					alert("Geef alstublieft uw boekingsperiode op");
   					return false;
   				}
   			
-
   			}
+  			console.log(13);
 			
 	</script>
 
@@ -161,10 +164,10 @@
    		</div>
    		
    		<div id="201boekdiv" style="display: none">
-   		<form action= "info.php" method= "post" id="f1" name="boekform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form action= "info.php" method= "post" id="f1" name="boekform" enctype="text/plain" onsubmit="return validateForm()">
 			Boekingsinformatie:
 			<br>
-				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
+				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" placeholder="dd-mm-jjjj" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
 			<br>
 				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
 			<br>
@@ -177,40 +180,7 @@
 			<input type="submit" />
 		</form>
    		</div>
-   		<div id="202boekdiv" style="display: none">
-   		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(202)" method="get">
-			Boekingsinformatie:
-			<br>
-				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
-			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
-			<br>
-				<input type="checkbox" name="Caravan" value="Caravan">Caravan
-				<br>
-				<input type="checkbox" name="Tent" value="Tent">Tent
-				<br>
-				<input type="checkbox" name="Camper" value="Camper">Camper
-			<br>
-			<input type="submit" />
-		</form>
-   		</div>   		 			
-   		<div id="203boekdiv" style="display: none">
-   		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(203)" method="get">
-			Boekingsinformatie:
-			<br>
-				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
-			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
-			<br>
-				<input type="checkbox" name="Caravan" value="Caravan">Caravan
-				<br>
-				<input type="checkbox" name="Tent" value="Tent">Tent
-				<br>
-				<input type="checkbox" name="Camper" value="Camper">Camper
-			<br>
-			<input type="submit" />
-		</form>
-   		</div>
+
    		
    		
 	</body>
