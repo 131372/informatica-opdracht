@@ -23,5 +23,23 @@ catch(PDOException $e)
      
     trigger_error($sMsg); 
 } 
+
+function query($query,$db){
+
+try{
+	$result = $db->prepare($query);
+	$result->execute();
+	return $result;
+}	
+	catch(PDOException $e) 
+{ 
+    echo '<pre>'; 
+    echo 'Regel: '.$e->getLine().'<br>'; 
+    echo 'Bestand: '.$e->getFile().'<br>'; 
+    echo 'Foutmelding: '.$e->getMessage(); 
+    echo '</pre>'; 
+}
+
+}
 ?>
 </html>

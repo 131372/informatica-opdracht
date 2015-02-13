@@ -37,30 +37,7 @@
 			};
 
 			function validateForm() {
-					var x=document.forms["contactform"]["voornaam"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Geef alstublieft uw volledige naam op");
-  			return false;
-  				}
-  					var x=document.forms["contactform"]["achternaam"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Geef alstublieft uw achternaam op");
-  			return false;
-  				}
-  					var x=document.forms["contactform"]["e-mail adres"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Geef alstublieft uw e-mail adres op");
-  			return false;
-  				}
-  					var x=document.forms["contactform"]["vraag"].value;
-					if (x==null || x=="")
-  				{
-  			alert("Why you send a mail, when you don't send any message to me?");
-  			return false;
-  				}
+					return true;
 			}
 
 	</script>
@@ -214,7 +191,7 @@
 		</form>
    		</div>
    		 			<div id="203boekdiv" style="display: none">
-   		<form <form action=”info.php” method=”post”> name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+   		<form <form action="info.php" method="post" name="contactform" onsubmit="return validateForm()">
 
 			Persoonlijke informatie:
 			<br>
@@ -230,7 +207,7 @@
 			<br>
 				Boekingsperiode:
 			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+				Aantal personen: <input type="text" name="personen" placeholder="aantal personen"
 			<br>
 				<input type="checkbox" name="Caravan" value="Caravan">Caravan
 				<br>
@@ -238,6 +215,7 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
+				<input type="submit" value="submit" name="submit">
 
 		</form>
    		</div>
