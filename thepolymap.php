@@ -7,11 +7,7 @@
 			 //echo "<script> document.getElementById('plaats').innerHTML=!!!; </script>"
 		?>
 		<script>
-		$(document).ready(function() {
 
-
-
-		});
 			window.onload = function(){ 
 				var a = document.getElementById('201');
 				a.onmouseover = function() {
@@ -42,18 +38,26 @@
 				} 
 				c.onclick = function() {
 					document.getElementById('201boekdiv').style.display = 'block';
+					document.getElementById('plaats').innerHTML = '203';
 				}
-			
+				
 			};
 
 			function validateForm()
 			{
-				var mailformat=document.forms["boekform"]["email"].value;  
-				if (mailformat.match(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))) 
+				/*var mailformat=document.forms["boekform"]["email"].value;  
+				if (mailformat.match(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))); 
 				{  
 					alert("U heeft een onjuist e-mail adres opgegeven");  
 					return false;  
 				} 
+				*/
+				
+				if (match(!(/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/.test(boekform.email.value))))	
+				{
+ 					alert("Invalid E-mail Address! Please re-enter.")
+  					return (false)
+				}
 				
 				var allchecked=0;
 				if(document.getElementById('Caravan').checked){allchecked=1;}
@@ -182,6 +186,7 @@
    		<div id="201boekdiv" style="display: none">
    		<form action= "info.php" method= "post" id="f1" name="boekform" enctype="text/plain" onsubmit="return validateForm()">
 			Boekingsinformatie:
+				<input name="kavel" id="plaats" style="display: none"></input>
 			<br>
 				Boekingsperiode: Vanaf:<input id=bp1 type="date" name="boekingsperiode" placeholder="jjjj-mm-dd" min="<?php echo date("Y-m-d") ?>">tot <input type="date" placeholder="jjjj-mm-dd" name="boekingsperiode2" min="<?php echo date("Y-m-d") ?>">
 			<br>
