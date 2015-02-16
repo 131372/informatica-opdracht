@@ -1,6 +1,11 @@
 <!doctype html>
 <html>
 <head>
+
+<script>
+ console.log(11);
+</script>
+
 <?php
 session_start();
 if(!isset($_SESSION['username'])){
@@ -9,14 +14,15 @@ if(!isset($_SESSION['username'])){
 
 require_once "db_config.php";
 
-//$tijd=$_POST[''];
+$tijd1=$_POST['boekingsperiode'];
+$tijd2=$_POST['boekingsperiode2'];
 $aantal=$_POST['personen'];
+$tijd=$tijd1."/".$tijd2;
+$plaats=$_POST['kavel'];
 
-$tijd="nee";
 $caravan=0;
 $tent=0;
 $camper=0;
-
 
 if(isset($_POST['Caravan'])){
 $caravan=1;
@@ -28,9 +34,15 @@ if(isset($_POST['Camper'])){
 $camper=1;
 }
 
-$verblijf=$caravan.",".$tent.",".$camper;
+$results = query("SELECT boekingsperiode FROM Boekingen WHERE kavel=:kavel",array(":kavel"=>$plaats),$db);
+$perio=$results->fetch();
+$perio=$perio['boekingsperiode'];
+echo $perio;
 
-query("INSERT INTO Boekingen (username,boekingsperiode,personen,verblijfplaats) VALUES (:usnaam,:per,:pers,:ver)",array(":usnaam"=>$_SESSION['username'],"per"=>$tijd,":pers"=>$aantal,":ver"=>$verblijf),$db);
+$verblijf=$caravan.",".$tent.",".$camper;
+query("INSERT INTO Boekingen (username,boekingsperiode,personen,verblijfplaats,kavel) VALUES (:usnaam,:per,:pers,:ver,:kavel)",array(":usnaam"=>$_SESSION['username'],"per"=>$tijd,":pers"=>$aantal,":ver"=>$verblijf,":kavel"=>$plaats),$db);
+
+// als gebruikersnaam verandert moet ook de gebruikersnaam bij de boekingen veranderen
 ?>
 
 

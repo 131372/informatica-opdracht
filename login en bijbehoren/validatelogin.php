@@ -7,7 +7,7 @@ require_once 'db_config.php';
 $username=$_POST['username']; 
 $password=$_POST['password']; 
 
-$result=query("SELECT username,password from login where username='$username' and password='$password'",$db);
+$result=query("SELECT username,password from login where username=:name and password=:pass",array(":name"=>$username,":pass"=>$password),$db);
 
 
 $count=$result->rowCount();
