@@ -2,11 +2,11 @@ filter
 
 overal form validation
 
-de mousover popup bevat informatie uit database
+de mousover popup bevat informatie uit database (gedaan, maar misschien nog iets uitgebreider testen)
 
 informatie in database (bijv. kavelgrootte, bijzonderheden etc.)
 
-controleren dat boekingsperiodes niet overlappen
+controleren dat boekingsperiodes niet overlappen (gedaan, maar misschien nog iets uitgebreider testen)
 
 alle coordinaten in de database
 

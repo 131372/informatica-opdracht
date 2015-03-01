@@ -5,9 +5,33 @@
 		
 		<?php
 			 //echo "<script> document.getElementById('plaats').innerHTML=!!!; </script>"
+			 session_start();
+			 require_once "db_config.php";
+			 $result=query("SELECT * FROM Kavels",null,$db);
+			 $i=200;
+			 echo "<script> window.onload = function(){";
+			 while($row=$result->fetch()){
+				 $i++;
+				 $waarde = $i."div";
+				echo"
+				var a$i = document.getElementById('$i');
+				 a$i.onmouseover = function() {
+ 		 			document.getElementById('$waarde').style.display = 'block';
+				}
+				a$i.onmouseout = function() {
+ 			 		document.getElementById('$waarde').style.display = 'none';
+				}
+				a$i.onclick = function() {
+					document.getElementById('201boekdiv').style.display = 'block';
+					document.getElementById('plaats2').value = '$i';
+				}
+				 ";
+			 }
+			 echo "};</script>";
+			 $i=200;
 		?>
 		<script>
-
+/*
 			window.onload = function(){ 
 				var a = document.getElementById('201');
 				a.onmouseover = function() {
@@ -43,7 +67,7 @@
 					document.getElementById('plaats2').value = '203';
 				}				
 			};
-
+*/
 			function validateForm()
 			{
 				/*var mailformat=document.forms["boekform"]["email"].value;  
@@ -94,7 +118,7 @@
 	
 	</head>
 	<style>
-	
+<!--	
 	#201div {
 		position: fixed;
     	top: 50px;
@@ -129,6 +153,7 @@
     	width: 800px;
     	height: 600px;
     }
+	-->
 	</style>
 	<body>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
@@ -137,8 +162,8 @@
 			require_once 'db_config.php';
 			try{
 				$sql = "SELECT nummer,coordinaten1 from Kavels";
-				$result = $db->prepare($sql);
-				$result->execute();
+				$results = $db->prepare($sql);
+				$results->execute();
 			}	
 			catch(PDOException $e){ 
    				echo '<pre>'; 
@@ -147,13 +172,13 @@
     			echo 'Foutmelding: '.$e->getMessage(); 
     			echo '</pre>'; 
 			}
-			while($row = $result->fetch(PDO::FETCH_ASSOC)){
-				echo "<area shape='poly' id='$row[nummer]' class='mapping' coords='$row[coordinaten1];'/>";	
+			while($row2 = $results->fetch(PDO::FETCH_ASSOC)){
+				echo "<area shape='poly' id='$row2[nummer]' class='mapping' coords='$row2[coordinaten1];'/>";	
 			}
 			?>
 			
 		</map>
-
+<!--
    		<div id="201div" style="display: none">
    		Plaats nr.: A <span id="plaats"> <br>
    		Prijs (p.p per nacht): €genoeg <br>
@@ -183,18 +208,48 @@
    		Grootte: M <br>
    		Bijzonderheden: 203 <br>
    		</div>
-   		
+   		-->
+		<?php
+		$i=200;
+		$result=query("SELECT * FROM Kavels",null,$db);
+		while($row=$result->fetch()){
+			$i++;
+			$waarde = $i."div";
+			$row1 = $row['Standaard_dagprijs'];
+			$row2 = $row['Type'];
+			$row3 = $row['Grootte'];
+			$row4 = $row['bijzonderheden'];
+			if($row['Geboekt']!=1){
+				$bezet="niemand heeft deze kavel nog geboekt.";
+			}
+			else{
+				$boek=query("SELECT kavel,boekingsperiode FROM Boekingen WHERE kavel=:kavel",array(":kavel"=>$row['Nummer']),$db);
+				while($row3=$boek->fetch()){
+					$bezet=$bezet.$row3['boekingsperiode']."<br>";
+				}
+			}
+			echo "
+			<div id='$waarde' style='display:none;'>
+			Plaats nr.: $i <br>
+			Prijs (p.p. per nacht exclusief kortingen): $row1<br>
+			Bezet op: $bezet<br>
+			Type: $row2<br>
+			Grootte: $row3<br>
+			Bijzonderheden: $row4<br>
+			</div>
+			";
+			$bezet="";
+		}
+		?>
    		<div id="201boekdiv" style="display: block">
    		<form action= "info.php" method= "post" id="f1" name="boekform" onsubmit="return validateForm()">
 			Boekingsinformatie:
-				<input name="kavel" id="plaats2" style="display: block" value="123"></input>
+				<input name="kavel" id="plaats2" style="display: none" value="123"></input>
 			<br>
 				Boekingsperiode: Vanaf:<input id=bp1 type="date" name="boekingsperiode" placeholder="jjjj-mm-dd" min="<?php echo date("Y-m-d") ?>">tot <input type="date" placeholder="jjjj-mm-dd" name="boekingsperiode2" min="<?php echo date("Y-m-d") ?>">
 			<br>
 				Aantal personen: <input type="text" name="personen" placeholder="aantal personen">
-			<br>
-				E-mail adres: <input type="text" name="email" placeholder="e-mail adres">
-				<br>
+<br>
 				<input type="checkbox" id="Caravan" value="Caravan">Caravan
 				<br>
 				<input type="checkbox" id="Tent" value="Tent">Tent
@@ -204,5 +259,16 @@
 			<input type="submit" />
 		</form>
    		</div>
+		<?php
+		if(isset($_SESSION['boekoverlap'])){
+			if($_SESSION['boekoverlap']!=0){
+				$a=$_SESSION['boekoverlap'][0];
+				$b=$_SESSION['boekoverlap'][1];
+				echo "uw boeking overlapt al met een andere boeking<br>";
+				echo "iemand heeft deze kavel al geboek van $a tot $b";
+				$_SESSION['boekoverlap']=0;
+			}
+		}
+		?>
 	</body>
 </html>
