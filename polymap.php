@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		
+		<?php
+			 //echo "<script> document.getElementById('plaats').innerHTML=!!!; </script>"
+		?>
 		<script> 
 			window.onload = function(){ 
 				var a = document.getElementById('201');
@@ -34,15 +38,36 @@
 				c.onclick = function() {
 					document.getElementById('203boekdiv').style.display = 'block';
 				}
+
+			
+				};
 			};
 
-			function validateForm() {
-					var x=document.forms["contactform"]["voornaam"].value;
-					if (x==null || x=="")
+			function validateForm()
+			{
+				var allchecked=0;
+				if(document.getElementById('Caravan').checked){allchecked=1;}
+				if(document.getElementById('Tent').checked){allchecked=1;}
+				if(document.getElementById('Camper').checked){allchecked=1;}
+				if(allchecked==0){alert('Selecteer camper, caravan en/of tent'); return false;}
+				
+  				var x=document.forms["boekform"]["aantal personen"].value;
+				if (x==null || x=="")
   				{
-  			alert("Geef alstublieft uw volledige naam op");
-  			return false;
+  					alert("Geef alstublieft het aantal personen op");
+  					return false;
   				}
+
+  				/*var x=document.forms["boekform"]["boekingsperiode"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw boekingsperiode op");
+  					return false;
+  				}
+  				*/
+
+  			}
+			
   					var x=document.forms["contactform"]["achternaam"].value;
 					if (x==null || x=="")
   				{
@@ -63,11 +88,13 @@
   				}
 			}
 
+>>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 	</script>
 
 	
 	</head>
 	<style>
+	
 	#201div {
 		position: fixed;
     	top: 50px;
@@ -125,10 +152,11 @@
 				echo "<area shape='poly' id='$row[nummer]' class='mapping' coords='$row[coordinaten1];'/>";	
 			}
 			?>
+			
 		</map>
 
    		<div id="201div" style="display: none">
-   		Plaats nr.: A <br>
+   		Plaats nr.: A <span id="plaats"> <br>
    		Prijs (p.p per nacht): €genoeg <br>
    		Bezet op: (31-1 tot 10-2) <br>
    		          (24-2 tot 4-3) <br>
@@ -158,6 +186,10 @@
    		</div>
    		
    		<div id="201boekdiv" style="display: none">
+<<<<<<< HEAD
+   		<form action= "info.php" method= "post" id="f1" name="boekform" enctype="text/plain" onsubmit="return validateForm()" method="get">
+			Boekingsinformatie:
+=======
    		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
 
 			Persoonlijke informatie:
@@ -171,21 +203,28 @@
 				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
 			<br>
 				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
+>>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
-				Boekingsperiode:
+				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
 			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
 			<br>
-				<input type="checkbox" name="Caravan" value="Caravan">Caravan
+				<input type="checkbox" id="Caravan" value="Caravan">Caravan
 				<br>
-				<input type="checkbox" name="Tent" value="Tent">Tent
+				<input type="checkbox" id="Tent" value="Tent">Tent
 				<br>
-				<input type="checkbox" name="Camper" value="Camper">Camper
+				<input type="checkbox" id="Camper" value="Camper">Camper
 			<br>
 
 		</form>
    		</div>
    		<div id="202boekdiv" style="display: none">
+<<<<<<< HEAD
+   		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(202)" method="get">
+			Boekingsinformatie:
+			<br>
+				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
+=======
    		<form name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
 
 			Persoonlijke informatie:
@@ -201,8 +240,9 @@
 				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
 			<br>
 				Boekingsperiode:
+>>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
 			<br>
 				<input type="checkbox" name="Caravan" value="Caravan">Caravan
 				<br>
@@ -212,6 +252,12 @@
 			<br>
 
 		</form>
+<<<<<<< HEAD
+   		</div>   		 			
+   		<div id="203boekdiv" style="display: none">
+   		<form action= "info.php" method= "post" name="boekform" enctype="text/plain" onsubmit="return validateForm(203)" method="get">
+			Boekingsinformatie:
+=======
    		</div>
    		 			<div id="203boekdiv" style="display: none">
    		<form <form action=”info.php” method=”post”> name="contactform" enctype="text/plain" onsubmit="return validateForm()" method="get">
@@ -223,14 +269,11 @@
 				Adres: <input type="text" name="postcode" placeholder="postcode"> 
 				<input type="text" name="huisnummer" placeholder="huisnummer">
 				<input type="text" name="land" placeholder="land">
+>>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 			<br>
-				Tel. nummer <input type="text" name="tel. nummer" placeholder="tel. nummer">
+				Boekingsperiode: Vanaf:<input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">tot <input type="date" name="boekingsperiode" min="<?php echo date("Y-m-d") ?>">
 			<br>
-				E-mail adres: <input type="text" name="e-mail adres" placeholder="e-mail adres">
-			<br>
-				Boekingsperiode:
-			<br>
-				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen"
+				Aantal personen: <input type="text" name="aantal personen" placeholder="aantal personen">
 			<br>
 				<input type="checkbox" name="Caravan" value="Caravan">Caravan
 				<br>
@@ -238,7 +281,11 @@
 				<br>
 				<input type="checkbox" name="Camper" value="Camper">Camper
 			<br>
+<<<<<<< HEAD
+			<input type="submit" />
+=======
 
+>>>>>>> 0ebffb3e70a1e3ee5029a5a973f99f15ad76dcf8
 		</form>
    		</div>
    		

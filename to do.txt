@@ -1,4 +1,19 @@
-polygon coördinaten in de database voor mousehover
-
 filter
 
+overal form validation
+
+de mousover popup bevat informatie uit database (gedaan, maar misschien nog iets uitgebreider testen)
+
+informatie in database (bijv. kavelgrootte, bijzonderheden etc.)
+
+controleren dat boekingsperiodes niet overlappen (gedaan, maar misschien nog iets uitgebreider testen)
+
+alle coordinaten in de database
+
+verlopen boekingen uit database halen
+
+unit testen (jacob vragen)
+
+boekingsformulier gaat weg als je ergens klikt behalve op het formulier
+
+opmaak (optioneel)
