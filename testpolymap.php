@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<style>
+		.streep{
+		width:20px;
+		height: 2px;
+		background-color:black;
+		position: absolute;
+	}
+	</style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		
 		<?php
@@ -10,7 +18,10 @@
 			 $result=query("SELECT * FROM Kavels",null,$db);
 			 $i=200;
 			 echo "<script> window.onload = function(){";
+			 $vari=array();
 			 while($row=$result->fetch()){
+				$ding=array($row['Nummer'],$row['Grootte'],$row['Type'],$row['Standaard_dagprijs']);
+				array_push($vari,$ding);
 				 $i++;
 				 $waarde = $i."div";
 				echo"
@@ -113,6 +124,10 @@
  
   			}
 			
+			function filter(){
+				
+			}
+			
 	</script>
 
 	
@@ -156,6 +171,34 @@
 	-->
 	</style>
 	<body>
+	<?php
+	$iets=query("SELECT nummer,coordinaten2 from Kavels",null,$db);
+	$i=200;
+	while($row = $iets->fetch()){
+		$i++;
+		$div = explode(",",$row['coordinaten2']);
+		echo "<div class='streep' style='top:",$div[1],"px;left:",$div[0],"px;' id=",$i,"></div>";
+	}
+	
+	?>
+		<div style="position:absolute;left:808px;">
+			<form>
+				Filter:<br>
+				Type:<br>
+				<input type="radio" name="type" value="comfort">Comfort<br>
+				<input type="radio" name="type" value="ze">Zonder elektra<br>
+				<input type="radio" name="type" value="budget">Budget<br>
+				Plaatsgrootte:<br>
+				<input type="radio" name="grootte" value="klein">Klein<br>
+				<input type="radio" name="grootte" value="middel">Middel<br>
+				<input type="radio" name="grootte" value="groot">Groot<br>
+				Boekingsperiode:<br>
+				Vanaf: <input type="date">tot<input type="date"><br>
+				Prijs (p.p. per nacht):<br>
+				min:€<input type="text">max:€<input type="text"><br>
+				<input type="submit" value="filter" onsubmit="filter()">
+			</form>
+		</div>
 		<img src="http://vakantieparksallandshoeve.nl/wp-content/gallery/camping/camping-plattegrond-2013_v1.jpg" alt="plattegrond" class="image" usemap="#me" class="map">
 		<map name='me'>
        		<?php
@@ -241,7 +284,7 @@
 			$bezet="";
 		}
 		?>
-   		<div id="201boekdiv" style="display: block">
+   		<div id="201boekdiv" style="display: none">
    		<form action= "info.php" method= "post" id="f1" name="boekform" onsubmit="return validateForm()">
 			Boekingsinformatie:
 				<input name="kavel" id="plaats2" style="display: none" value="123"></input>
