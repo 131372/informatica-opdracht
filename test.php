@@ -17,10 +17,9 @@
 </head>
 <body>
 
-<img width="500" height="500" src="camping plattegrond.jpg" alt="niets">
+<img width="800" height="600" src="camping plattegrond.jpg" alt="niets">
 
 <script>
-require_once 'db_config.php'; 
 
 var y=0;
 var z=0;
@@ -91,35 +90,17 @@ document.addEventListener("click", printMousePos);
 
 require_once 'db_config.php';
 
-	try{
-	$sql = "SELECT nummer,coordinaten2 from Kavels";
-	$result = $db->prepare($sql);
-	$result->execute();
-}	
-	catch(PDOException $e) 
-{ 
-    echo '<pre>'; 
-    echo 'Regel: '.$e->getLine().'<br>'; 
-    echo 'Bestand: '.$e->getFile().'<br>'; 
-    echo 'Foutmelding: '.$e->getMessage(); 
-    echo '</pre>'; 
-}
 	
-	while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
-<<<<<<< HEAD
-	$sql = "SELECT nummer,coordinaten2 from Kavels";
-	$result = $conn->$sql;
+	$result=query("SELECT nummer,coordinaten2 FROM Kavels",null,$db);
 	$i = 0;
-	foreach($cords as $div){
+	while($row=$result->fetch()){
 		$i++;
-		print_r($div);
-		$div = explode(",",$div);
-		echo "<div id='",$i,"' class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
-=======
-		$div = explode(",",$row['coordinaten2']);
-		echo "<div class='streep' style='top:",$div[1],";left:",$div[0],";'></div>";
->>>>>>> bbd69ce063a9d3b298c61e70c00bffcf34b9568e
+		$x = $row['coordinaten2'];
+		$div = explode(",",$x);
+		echo "<div id='",$i,"' class='streep' style='position: absolute; top:",$div[1],";left:",$div[0],";'></div>";
+
+		
 	}
 	
 ?>
