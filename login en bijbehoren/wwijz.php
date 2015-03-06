@@ -7,8 +7,31 @@ if(!isset($_SESSION['username'])){
 	header("location:login.php");
 }
 ?>
-
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			function validateForm()
+			{
+				var y=document.forms["register"]["password"].value;
+				if (y==null || y=="")
+  				{
+  					alert("Geef alstublieft uw wachtwoord op");
+  					return false;
+  				}
+  				var x=document.forms["register"]["wachtwoord2"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw nieuwe wachtwoord op");
+  					return false;
+  				}
+  				var x=document.forms["register"]["wachtwoord2"].value;
+				if (x==y || x=="")
+  				{
+  					alert("Uw nieuwe wachtwoord is het zelfde als uw oude, kies alstublieft een andere");
+  					return false;
+  				}
+  				
+  			}
+  		</script>
 </head>
 
 

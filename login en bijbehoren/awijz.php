@@ -7,7 +7,36 @@ if(!isset($_SESSION['username'])){
 	header("location:login.php");
 }
 ?>
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			function validateForm()
+			{
+			var x=document.forms["register"]["post2"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw nieuwe postcode op");
+  					return false;
+  				}
+  				 var x=document.forms["register"]["huis2"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw nieuwe huisnummer op");
+  					return false;
+  				}
+  				var x=document.forms["register"]["land2"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw nieuwe land op");
+  					return false;
+  				}
+  				var x=document.forms["register"]["password"].value;
+				if (x==null || x=="")
+  				{
+  					alert("U heeft uw wachtwoord niet opgegeven");
+  					return false;
+  				}
+  			}
+  		</script>
 
 </head>
 

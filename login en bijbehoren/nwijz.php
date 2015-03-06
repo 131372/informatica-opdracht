@@ -7,8 +7,24 @@ if(!isset($_SESSION['username'])){
 	header("location:login.php");
 }
 ?>
-
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			function validateForm()
+			{
+			var y=document.forms["register"]["password"].value;
+				if (y==null || y=="")
+  				{
+  					alert("U heeft uw wachtwoord niet ingevuld");
+  					return false;
+  				}
+  			var x=document.forms["register"]["naam2"].value;
+				if (x==null || x=="")
+  				{
+  					alert("Geef alstublieft uw nieuwe (volledige) naam op");
+  					return false;
+  				}
+  			}
+		</script>
 </head>
 
 
